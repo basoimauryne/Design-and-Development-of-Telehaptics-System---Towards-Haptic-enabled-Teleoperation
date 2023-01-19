@@ -40,6 +40,7 @@ def translate(value, leftmin, leftmax, rightmin, rightmax):
 
       
 while True:
+    #Create RCP socket
     s = socket(AF_INET, SOCK_STREAM)
 
     result= p.stdout.readline().strip()
@@ -83,4 +84,5 @@ while True:
        s.send(str(send_data).encode('utf8'))
  # Enable acknowledgement when haptic feedback is received at the master controller
     answer = s.recv(1024)
+    #Close TCP socket
     s.close()

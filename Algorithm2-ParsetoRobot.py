@@ -17,7 +17,7 @@ dict={}
 # Read values sent from robotic arm 
 p = Popen([program_path], stdout=PIPE, stdin=PIPE, universal_newlines=True)
 #This is initializing the minimum position values for the 4DOF robotic arm motors in every axis
-xaxis=100
+xaxis=100x
 yaxis1=100
 yaxis2=100
 zaxis=100
@@ -54,7 +54,7 @@ while True:
     #Mapping of haptic device input to the motor input range, i.e. the input range at master is between -0.219729 and 0.209877, while robotic arm motors input ranges from 100 to 560
 
     if 'X' in dict:
-        xaxis = int(translate(dict['X'], -0.219729, 0.209877, 100, 560))
+        xaxis = int(translate(dict['X'], -0.219729, 0.209877, 100, 560)
     if 'Y' in dict:
         yaxis1=int(translate(dict['Y'], -0.219729, 0.209877, 100, 560))
         yaxis2=int(translate(dict['Y'], -0.219729, 0.209877, 100, 560))
@@ -62,8 +62,10 @@ while True:
         zaxis=int(translate(dict['Z'], -0.219729, 0.209877, 100, 560))
     if 'Packet_Label' in dict:
         packet=int(dict['Packet_Label'])
+        
     
-
+    print ("translated_xaxis:", xaxis, "translated_yaxis1:", yaxis1,"translated_yaxis2:",yaxis2,"translated_zaxis:",zaxis,"translated_packet_label",packet)
+   
 
     pwm.set_pwm(0, 0, xaxis)
     pwm.set_pwm(1, 0, yaxis1)
